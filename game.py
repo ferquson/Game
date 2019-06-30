@@ -52,5 +52,5 @@ while bal > 0 or bal < 70:
         print("Lose")
         break
 
-print("Hello AZIZ! 2")
+
 print("Hello Aziz 3")
