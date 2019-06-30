@@ -51,3 +51,5 @@ while bal > 0 or bal < 70:
     elif balance(proc, crit) <= 30 or balance(proc, crit) >= 70:
         print("Lose")
         break
+
+print("Hello AZIZ!")
