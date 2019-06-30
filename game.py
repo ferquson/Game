@@ -1,27 +1,30 @@
-proc = 0
-crit = 100
-bal = (proc + crit) / 2
-def normal(proc):
-    proc += 1
-    return proc
+class Game:
 
-def balance(proc, crit):
-    return (proc + crit) / 2 
+    def __init__(self):
+        self.proc = 0
+        self.crit = 100
 
-def bad_1(crit):
-    crit -= 1
-    return crit
+    def normal(self):
+        self.proc += 1
 
-def good_1(proc):
-    proc += 1
-    return proc
+    def balance(self):
+        return (self.proc + self.crit) / 2
 
-def good_2(proc, crit):
-    proc += 1
-    crit -= 1
-    return proc, crit
+    def bad_1(self):
+        self.crit -= 1
 
-while bal > 0 or bal < 70:
+    def good_1(self):
+        self.proc += 1
+
+    def good_2(self):
+        self.proc += 1
+        self.crit -= 1
+
+
+game = Game()
+
+
+while game.balance() > 0 or game.balance() < 70:
     print("\n")
     try:
         chos = int(input("1)Хорошо,2)Плохо или 3)Очень хорошо?:"))
@@ -29,26 +32,26 @@ while bal > 0 or bal < 70:
     except ValueError as e:
         print("Error")
         continue
-    proc = normal(proc)
+    game.normal()
     if chos == 1:
-        proc = good_1(proc)
-        print(proc)
-        print(crit)
-        print(balance(proc, crit))
+        game.good_1()
+        print(game.proc)
+        print(game.crit)
+        print(game.balance())
     elif chos == 2:
-        crit = bad_1(crit)
-        print(proc)
-        print(crit)
-        print(balance(proc, crit))
+        game.bad_1()
+        print(game.proc)
+        print(game.crit)
+        print(game.balance())
     elif chos == 3:
-        proc, crit = good_2(proc, crit)
-        print(proc)
-        print(crit)
-        print(balance(proc, crit))
-    if proc >= 100:
+        game.good_2()
+        print(game.proc)
+        print(game.crit)
+        print(game.balance())
+    if game.proc >= 100:
         print("Win")
         break
-    elif balance(proc, crit) <= 30 or balance(proc, crit) >= 70:
+    elif game.balance() <= 30 or game.balance() >= 70:
         print("Lose")
         break
 print("Hello Aziz 3")
